@@ -1,0 +1,18 @@
+---02/07---
+
+get homepage
+get user/id
+get user/id/posts
+get login
+get loginfail
+get noaccess
+get signup
+get loggedin
+
+
+hur många routes behöver jag?
+ER-Diagram nästan klart?
+
+---x---
+
+
