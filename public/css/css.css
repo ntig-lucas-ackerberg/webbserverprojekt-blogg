@@ -1,0 +1,32 @@
+.loginbutton {
+color: red;
+}
+
+div.wrapper {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    background-color: #D3D3D3;
+    grid-template-columns: repeat( 14, 2fr);
+    grid-template-rows: repeat( 13, 4fr);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    display: grid;
+    background-color: gray;
+    grid-column: 1 / 15;
+    grid-row: span 2;
+}
+
+form.b {
+    grid-column: 4 / 9;
+    grid-row: 4 / 7;
+}
+
+.sidebar {
+    grid-column: 2 / 3;
+    grid-row: 4 / 13;
+    background-color: gray;
+}

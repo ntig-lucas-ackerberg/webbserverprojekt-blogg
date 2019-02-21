@@ -1,2 +1,2 @@
-button class="loginbutton"
-    a href="/login" Logga in 
+-if session[:username] != nil
+    p = "Welcome #{session[:username]}"
