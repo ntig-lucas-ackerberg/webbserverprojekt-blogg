@@ -15,6 +15,11 @@ html lang="en"
                     input type="submit" value="Logga in"
                 p Har du inget konto?
                 a href="/signup" Registrera här.
+                -if session[:username] != nil
+                    p = "Welcome #{session[:username]}"
+                    form.logoutbutton action="/logout" method="post"
+                                input type="submit" value="Logout"
+                -else
             .sidebar
-                p YeEt
+                p yeeet
             == yield

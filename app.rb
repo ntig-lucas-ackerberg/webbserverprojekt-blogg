@@ -12,6 +12,10 @@ get('/login') do
     slim(:login)
 end
 
+get('/profile') do
+    slim(:profile)
+end
+
 post('/login') do
     db = SQLite3::Database.new("db/db.db")
     db.results_as_hash = true
@@ -30,6 +34,13 @@ end
 
 get('/signup') do
     slim(:signup)
+end
+
+post('/logout') do
+    session[:username] = nil
+    session[:password] = nil
+    session.destroy
+    redirect('/')
 end
 
 post('/signup') do
