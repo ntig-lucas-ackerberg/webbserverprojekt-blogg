@@ -1,1 +1,15 @@
 p My posts:
+a href="/newpost" New post
+.blogposts
+    - blogposts.each do |element|
+        article.blogpost
+            div.controls
+                / a href="/edit/#{element["id"]}"
+                    button
+                        i.material-icons edit
+                span 
+                    / form action="/#{element["id"]}/delete" method="POST"
+                        button type="submit" value=""
+                            i.material-icons delete
+            h2 = element["posttitle"]
+            p = element["posttext"]

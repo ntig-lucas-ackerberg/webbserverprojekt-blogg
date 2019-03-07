@@ -16,6 +16,23 @@ get('/profile') do
     slim(:profile)
 end
 
+get('/profile') do
+    db = SQLite3::Database.new('db/db.db')
+    db.results_as_hash = true
+    blogposts = db.execute("SELECT authorid, posttitle, posttext FROM post WHERE postid=?") , 2
+    slim(:profile, locals:{blogposts: blogposts})
+end
+
+get('/newpost') do
+    slim(:newpost)
+end
+
+post('/newpost') do
+    db = SQLite3::Database.new('db/db.db')
+    db.execute("INSERT INTO post(posttitle, posttext, authorid ) VALUES (?,?,?)",params["posttitle"],params["posttext"],2)
+        redirect('/profile')
+end
+
 post('/login') do
     db = SQLite3::Database.new("db/db.db")
     db.results_as_hash = true
