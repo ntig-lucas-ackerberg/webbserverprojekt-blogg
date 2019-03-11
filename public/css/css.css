@@ -6,34 +6,25 @@ div.wrapper {
     /* display: grid; */
     width: 100vw;
     height: 100vh;
-    background-color: #D3D3D3;
-    grid-template-columns: repeat( 14, 2fr);
-    grid-template-rows: repeat( 13, 4fr);
+    background-color: #ffff;
+    /* grid-template-columns: repeat( 14, 2fr);
+    grid-template-rows: repeat( 13, 4fr); */
     margin-left: auto;
     margin-right: auto;
 }
 
 header {
-    /* display: grid; */
-    /* background-color: black; */
-    grid-column: 1 / 15;
-    grid-row: span 2;
-}
-
-form.b {
-    grid-column: 4 / 9;
-    grid-row: 4 / 7;
+    background-color: #ffff;
+    text-align: center;
 }
 
 .sidebar {
-    grid-column: 2 / 3;
-    grid-row: 4 / 13;
     background-color: gray;
 }
 
-form.logoutbutton {
+/* form.logoutbutton {
     grid-column: 
-}
+} */
 
 .blogpost {
     grid-column: 4 / 12;
@@ -46,4 +37,16 @@ form.logoutbutton {
 article.blogpost {
     background-color: lightgrey;
     margin: 10px;
+}
+
+form.yeet {
+    text-align: center;
+}
+
+p.myposts {
+    text-align: center;
+}
+
+a.newpost {
+    align-items: center;
 }
