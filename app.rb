@@ -12,19 +12,15 @@ get('/login') do
     slim(:login)
 end
 
-get('/profile') do
-    slim(:profile)
+get('/newpost') do
+    slim(:newpost)
 end
 
 get('/profile') do
     db = SQLite3::Database.new('db/db.db')
     db.results_as_hash = true
-    blogposts = db.execute("SELECT authorid, posttitle, posttext FROM post WHERE postid=?") , 2
+    blogposts = db.execute("SELECT authorid, posttitle, posttext FROM post WHERE authorid=?" ,2)
     slim(:profile, locals:{blogposts: blogposts})
-end
-
-get('/newpost') do
-    slim(:newpost)
 end
 
 post('/newpost') do
@@ -69,5 +65,24 @@ post('/signup') do
     else
         redirect('/signup')
     end
+end
+
+get('/edit/:id') do 
+    db = SQLite3::Database.new('db/db.db')
+    db.results_as_hash = true
+    result = db.execute("SELECT id, posttitle, posttext FROM post WHERE id = ?",params["id"])
+    slim(:editpost, locals:{result: result})
+end
+
+post('/edit/:id/update') do 
+    db = SQLite3::Database.new('db/db.db')
+    db.execute("UPDATE post SET posttitle = ?,posttext = ? WHERE id = ?",params["posttitle"],params["posttext"],params["id"])
+    redirect('/profile')
+end
+
+post('/:id/delete') do
+    db = SQLite3::Database.new("db/db.db")
+    db.execute("DELETE FROM post WHERE id = (?)", params["id"])
+    redirect('/profile')
 end
 

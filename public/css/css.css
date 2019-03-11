@@ -3,7 +3,7 @@ color: red;
 }
 
 div.wrapper {
-    display: grid;
+    /* display: grid; */
     width: 100vw;
     height: 100vh;
     background-color: #D3D3D3;
@@ -14,8 +14,8 @@ div.wrapper {
 }
 
 header {
-    display: grid;
-    background-color: gray;
+    /* display: grid; */
+    /* background-color: black; */
     grid-column: 1 / 15;
     grid-row: span 2;
 }
@@ -33,4 +33,17 @@ form.b {
 
 form.logoutbutton {
     grid-column: 
+}
+
+.blogpost {
+    grid-column: 4 / 12;
+    grid-row: 0 / 7;
+    text-align: center;
+    background-color: white;
+    padding: 50px;
+}
+
+article.blogpost {
+    background-color: lightgrey;
+    margin: 10px;
 }
