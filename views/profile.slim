@@ -1,14 +1,24 @@
-p.myposts My posts:
-a.newpost href="/newpost" New post
-.blogpost
+-if session[:username] != nil
+    p.myposts My posts:
+    a.newpost href="/newpost" New post
+    .editcredentials
+        a.editprofile href="/editprofile" Edit credentials    
+    .blogpost
+        - blogposts.each do |element|
+            article.blogpost
+                div.controls
+                    a href="/edit/#{element["id"]}"
+                        button
+                            i.material-icons edit 
+                        form action="/#{element["id"]}/delete" method="POST"
+                            button type="submit" value=""
+                                i.material-icons delete
+                h2 = element["posttitle"]
+                p = element["posttext"]        
+-else
+    .homelink
+        a.home href="/" Home
     - blogposts.each do |element|
         article.blogpost
-            div.controls
-                a href="/edit/#{element["id"]}"
-                    button
-                        i.material-icons edit 
-                    form action="/#{element["id"]}/delete" method="POST"
-                        button type="submit" value=""
-                            i.material-icons delete
             h2 = element["posttitle"]
             p = element["posttext"]

@@ -50,3 +50,16 @@ p.myposts {
 a.newpost {
     align-items: center;
 }
+
+.editcredentials {
+    text-align: right;
+    margin-right: 30px;
+}
+
+.homelink {
+    text-align: center;
+}
+
+.myprofilelink {
+    text-align: center;
+}

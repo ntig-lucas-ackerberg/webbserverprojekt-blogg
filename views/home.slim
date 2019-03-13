@@ -1,3 +1,9 @@
 -if session[:username] != nil
-    a href="/profile" My profile
+    .myprofilelink
+        a href="/profile/#{session[:id]}" My profile
 -else
+- blogposts.each do |element|
+        article.blogpost
+            h2 = element["posttitle"]
+            p = element["posttext"]
+            a href="/profile/#{element["authorid"]}" = "#{element["Namn"]}'s posts"
