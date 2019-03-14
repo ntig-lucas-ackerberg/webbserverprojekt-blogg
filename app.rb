@@ -36,6 +36,10 @@ post('/login') do
     end
 end
 
+get('/loginfail') do
+    slim(:loginfail)
+end
+
 get('/profile/:id') do
     db = SQLite3::Database.new('db/db.db')
     db.results_as_hash = true
@@ -46,7 +50,7 @@ end
 post('/newpost') do
     db = SQLite3::Database.new('db/db.db')
     db.execute("INSERT INTO post(posttitle, posttext, authorid ) VALUES (?,?,?)",params["posttitle"],params["posttext"],session[:id])
-        redirect('/profile/:id')
+        redirect("/profile/#{session[:id]}")
 end
 
 get('/editprofile') do
@@ -55,8 +59,9 @@ end
 
 post('/editprofile') do
     db = SQLite3::Database.new('db/db.db')
-    db.execute("UPDATE Användare SET Namn = ?",params["Username"])
-    redirect('/profile/:id')
+    db.execute("UPDATE Användare SET Namn = ? WHERE id = ?",params["Username"], session[:id])
+    session[:username] = params["Username"]
+    redirect("/profile/#{session[:id]}")
 end
 
 get('/signup') do
@@ -93,12 +98,12 @@ end
 post('/edit/:id/update') do 
     db = SQLite3::Database.new('db/db.db')
     db.execute("UPDATE post SET posttitle = ?,posttext = ? WHERE id = ?",params["posttitle"],params["posttext"],params["id"])
-    redirect('/profile/#{session[:id]}')
+    redirect("/profile/#{session[:id]}")
 end
 
 post('/:id/delete') do
     db = SQLite3::Database.new("db/db.db")
     db.execute("DELETE FROM post WHERE id = (?)", params["id"])
-    redirect('/profile/#{session[:id]}')
+    redirect("/profile/#{session[:id]}")
 end
 

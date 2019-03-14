@@ -9,10 +9,10 @@
                 div.controls
                     a href="/edit/#{element["id"]}"
                         button
-                            i.material-icons edit 
+                            i.material-icons colorize
                         form action="/#{element["id"]}/delete" method="POST"
                             button type="submit" value=""
-                                i.material-icons delete
+                                i.material-icons cancel
                 h2 = element["posttitle"]
                 p = element["posttext"]        
 -else
